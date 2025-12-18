@@ -1,6 +1,129 @@
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tangkap Bola Lucu</title>
+    <style>
+        /* Gaya Tampilan (CSS) */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #FFDEE9;
+            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        h1 { color: #ff4757; margin-bottom: 10px; }
+        
+        #gameCanvas {
+            background-color: #ffffff;
+            border: 5px solid #ff4757;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            cursor: none; /* Sembunyikan kursor agar terlihat seperti memegang papan */
+        }
+
+        .skor {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2f3542;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
-  halo rofiqi
+
+    <h1>Tangkap Bolanya! 🎾</h1>
+    <canvas id="gameCanvas" width="400" height="500"></canvas>
+    <div class="skor">Skor: <span id="skorAngka">0</span></div>
+
+    <script>
+        // Logika Game (JavaScript)
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const skorElemen = document.getElementById("skorAngka");
+
+        // Variabel Game
+        let skor = 0;
+        let x = canvas.width / 2;
+        let y = canvas.height - 30;
+        let dx = 3;  // Kecepatan horizontal bola
+        let dy = -3; // Kecepatan vertikal bola
+        let ballRadius = 15;
+        
+        // Papan pemukul (Paddle)
+        let paddleHeight = 15;
+        let paddleWidth = 80;
+        let paddleX = (canvas.width - paddleWidth) / 2;
+
+        // Kontrol Mouse
+        document.addEventListener("mousemove", mouseMoveHandler, false);
+
+        function mouseMoveHandler(e) {
+            let relativeX = e.clientX - canvas.offsetLeft;
+            if(relativeX > 0 && relativeX < canvas.width) {
+                paddleX = relativeX - paddleWidth / 2;
+            }
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = "#ffa502";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height - paddleHeight - 10, paddleWidth, paddleHeight);
+            ctx.fillStyle = "#2ed573";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            drawPaddle();
+
+            // Memantul di dinding kiri dan kanan
+            if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                dx = -dx;
+            }
+
+            // Memantul di atap
+            if(y + dy < ballRadius) {
+                dy = -dy;
+            } 
+            // Cek jika bola jatuh ke bawah
+            else if(y + dy > canvas.height - ballRadius - 10) {
+                if(x > paddleX && x < paddleX + paddleWidth) {
+                    dy = -dy; // Pantulkan jika kena papan
+                    skor++;
+                    skorElemen.innerText = skor;
+                    // Tambah kecepatan biar makin seru
+                    dx *= 1.05;
+                    dy *= 1.05;
+                } else {
+                    alert("YAAH JATUH! Skor kamu: " + skor);
+                    document.location.reload(); // Mulai ulang game
+                }
+            }
+
+            x += dx;
+            y += dy;
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
 </body>
 </html>
