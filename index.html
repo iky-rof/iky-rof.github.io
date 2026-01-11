@@ -2,68 +2,108 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Jejak Kebaikan | Remaja Masjid Nurut Taufiq</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Portofolio | Rofiqi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="hero">
-    <h1>Jejak Kebaikan</h1>
-    <p>Remaja Masjid Nurut Taufiq</p>
-    <span>“Masjid bukan hanya tempat ibadah, tapi tempat tumbuh”</span>
-</div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-<section class="story">
-    <h2>🌱 Awal Kami</h2>
-    <p>
-        Remaja Masjid Nurut Taufiq lahir dari keresahan dan harapan.
-        Kami percaya bahwa masjid harus menjadi rumah bagi generasi muda,
-        tempat belajar, bertumbuh, dan berbagi.
-    </p>
-</section>
+        body {
+            background: #f4f6f9;
+            color: #1f2933;
+        }
 
-<section class="story">
-    <h2>🧠 Nilai yang Kami Jaga</h2>
-    <ul>
-        <li>Ikhlas dalam bergerak</li>
-        <li>Bersama dalam kebaikan</li>
-        <li>Aktif tanpa melupakan adab</li>
-        <li>Belajar sepanjang hayat</li>
-    </ul>
-</section>
+        /* NAVBAR */
+        nav {
+            background: #020617;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-<section class="story">
-    <h2>👣 Jejak Kebaikan</h2>
-    <p>
-        Setiap kegiatan bukan tentang banyaknya acara,
-        tapi tentang dampak yang ditinggalkan.
-    </p>
-    <ul>
-        <li>Pengajian remaja → meningkatkan kesadaran beragama</li>
-        <li>Bakti sosial → menumbuhkan empati</li>
-        <li>Gotong royong → menghidupkan masjid</li>
-    </ul>
-</section>
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
 
-<section class="story quote">
-    <h2>🎤 Suara Remaja</h2>
-    <p>
-        “Di remaja masjid, saya belajar memimpin dan melayani.”
-    </p>
-</section>
+        nav ul li {
+            margin: 0 18px;
+        }
 
-<section class="story join">
-    <h2>🤝 Ayo Bersama Kami</h2>
-    <p>
-        Kami tidak mencari yang sempurna,  
-        kami mencari yang mau belajar dan bergerak.
-    </p>
-    <button>Bergabung Sekarang</button>
-</section>
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-<footer>
-    <p>&copy; 2026 Jejak Kebaikan - Remaja Masjid Nurut Taufiq</p>
-</footer>
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
 
-</body>
-</html>
+        /* HERO */
+        header {
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 110px 20px;
+        }
+
+        header h1 {
+            font-size: 44px;
+            font-weight: bold;
+        }
+
+        header .info {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        header .moto {
+            margin-top: 18px;
+            font-style: italic;
+            font-size: 16px;
+            color: #e0f2fe;
+        }
+
+        /* SECTION */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1e40af;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
